@@ -25,6 +25,94 @@ The daily page is generated in a lecture-style format so the learner can simply 
 - Text-to-speech support: users can select English text and use the built-in read-aloud controls for fast follow-along practice.
 - GitHub Pages ready: the project can be published as a static site and updated automatically through git push.
 
+## Before First Use
+
+If someone forks or copies this project, the first step should be defining a learner profile before generating daily plans.
+
+Recommended setup fields:
+
+- English level: for example `Level 2`, `Level 4`, or another starting level
+- Learning goal: for example `Business English`, `IELTS`, `Primary School`, `Middle School`, or `High School`
+- Daily study time: for example `30 minutes`, `60 minutes`, or `90 minutes`
+- Main focus: for example listening, speaking, vocabulary, reading, writing, exam practice, or schoolwork
+
+Example learner profiles:
+
+- `Level 4 + Business English`: meetings, emails, project updates, client communication
+- `Level 2 + School English`: basic vocabulary, sentence building, textbook reading, homework support
+- `Level 4 + IELTS`: listening practice, speaking responses, reading speed, writing task structure
+
+## Customization for Forks
+
+This repository is currently configured for one fixed learner profile:
+
+- Level: `Level 4`
+- Goal: `Business English`
+- Daily time: about `1 hour`
+
+If another user wants to reuse this project, they should first customize these files:
+
+- `README.md`: update the project description and target learner
+- `notion-business-english-system.md`: replace the 30-day structure with a plan that matches the new level and learning goal
+- `index.html`: update the live study page layout content, wording, and examples
+- `data/checkin.csv`: reset or rebuild the tracking records for the new learner
+
+Recommended initialization flow for a new user:
+
+1. Decide the learner's English level.
+2. Decide the learning purpose, such as business, IELTS, or school study.
+3. Set the daily study time.
+4. Rewrite the 30-day topic progression to match that profile.
+5. Regenerate the daily page content and tracking file from that customized plan.
+
+## Quick Start for New Users
+
+If you fork this project for your own use, start by filling in a simple learner profile like this:
+
+```text
+English level: Level 2 / Level 4 / Level 6
+Learning goal: Business English / IELTS / Primary School / Middle School / High School
+Daily study time: 30 minutes / 60 minutes / 90 minutes
+Main focus: listening / speaking / vocabulary / reading / writing / exam practice
+```
+
+Example profiles:
+
+```text
+English level: Level 4
+Learning goal: Business English
+Daily study time: 60 minutes
+Main focus: listening + speaking + vocabulary
+```
+
+```text
+English level: Level 2
+Learning goal: High School English
+Daily study time: 45 minutes
+Main focus: vocabulary + reading + sentence building
+```
+
+```text
+English level: Level 4
+Learning goal: IELTS
+Daily study time: 90 minutes
+Main focus: listening + speaking + writing
+```
+
+After that, update the study system so the daily topics, materials, and exercises actually match that learner profile.
+
+## Suggested Setup Questions
+
+Before generating a personalized plan, answer these questions:
+
+1. What is the learner's current English level?
+2. What is the learner studying for?
+3. How much time can they study each day?
+4. Which skills need the most improvement?
+5. Should the plan focus on work communication, school study, or exam preparation?
+
+The clearer these answers are, the easier it is to generate a useful daily study plan.
+
 ## What the Daily Plan Includes
 
 Each generated study page follows a fixed structure:
@@ -50,56 +138,3 @@ GitHub Pages URL:
 ## Project Files
 
 - `index.html`: the main daily study page
-- `data/checkin.csv`: day tracking and study history
-- `notion-business-english-system.md`: the full 30-day study framework and template reference
-
-## How to Use
-
-1. Open `index.html` in a browser.
-2. Follow the study page from top to bottom.
-3. Use the timer for each study block.
-4. Click the vocabulary or sentence read-aloud buttons, or select text and use the read-aloud control.
-5. Complete the daily speaking, reading, and writing tasks.
-6. Record progress in the daily check-in flow.
-
-## Local Development
-
-This is a static HTML project, so no build step is required.
-
-To preview locally:
-
-1. Open `index.html` directly in a browser.
-2. Or serve the folder with any static server if you prefer a localhost URL.
-
-## Automation
-
-The project is connected to a daily automation that:
-
-- generates the next daily English learning plan
-- updates local project files
-- commits the relevant changes
-- pushes them to `origin/main`
-
-That means the GitHub Pages site can stay in sync with the latest generated study plan.
-
-## Content Sources
-
-Preferred sources used by the study plans:
-
-- BBC Learning English
-- TED
-- Harvard Business Review
-- Cambridge Dictionary
-
-The project favors:
-
-- free access
-- direct content links
-- concrete listening or reading assignments
-- materials suitable for business English study
-
-## Notes
-
-- The current structure is optimized for daily use rather than for storing every full lesson on the README page.
-- Detailed study system content remains in `notion-business-english-system.md`.
-- The site is intended to be practical first: open, study, speak, write, and check in.
