@@ -1,0 +1,932 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>今日商务英语学习任务</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --soft: #f8fafc;
+      --text: #172033;
+      --muted: #64748b;
+      --line: #d7e0eb;
+      --accent: #2563eb;
+      --accent-soft: #eaf1ff;
+      --green: #0f766e;
+      --green-soft: #e8f6f3;
+      --warn: #a16207;
+      --warn-soft: #fff7dc;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background: var(--panel);
+      border-bottom: 1px solid var(--line);
+      padding: 28px 20px 22px;
+    }
+
+    main {
+      padding: 22px 20px 48px;
+    }
+
+    .wrap {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .resource-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .resource-bar a,
+    .pill {
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid #cfe0ff;
+      border-radius: 6px;
+      padding: 7px 10px;
+      font-size: 14px;
+    }
+
+    .notice {
+      margin-top: 14px;
+      color: #334155;
+      font-size: 14px;
+      background: #f1f5f9;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+
+    .voice-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .voice-tools select,
+    .voice-tools button {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--text);
+      padding: 7px 9px;
+      font: inherit;
+    }
+
+    .voice-tools button {
+      cursor: pointer;
+    }
+
+    .timer {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: center;
+      margin: 18px 0;
+      padding: 14px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .timer-display {
+      min-width: 112px;
+      color: var(--accent);
+      font-size: 32px;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .timer-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .timer button,
+    .timer input {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--text);
+      padding: 8px 10px;
+      font: inherit;
+    }
+
+    .timer button {
+      cursor: pointer;
+    }
+
+    .timer button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .timer input {
+      width: 88px;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .stat,
+    .section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .stat {
+      padding: 14px;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--accent);
+      font-size: 22px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .hero-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .hero-head {
+      padding: 18px;
+      background: #eef3f9;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topic {
+      color: var(--accent);
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .minutes {
+      color: var(--green);
+      background: var(--green-soft);
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 16px;
+    }
+
+    .section {
+      padding: 14px;
+      background: var(--soft);
+    }
+
+    .section.full {
+      grid-column: 1 / -1;
+    }
+
+    .divider {
+      height: 1px;
+      margin-top: 12px;
+      background: var(--line);
+    }
+
+    .module-title {
+      margin: 0 0 10px;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .lead-label {
+      margin: 10px 0 4px;
+      font-weight: 800;
+    }
+
+    .bilingual-lines {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .bilingual-line {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+
+    .bilingual-line strong {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .translation {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section.output {
+      background: var(--warn-soft);
+      border-color: #f3d27a;
+    }
+
+    .section.check {
+      background: var(--green-soft);
+      border-color: #a7d8ce;
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      color: #334155;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    ul,
+    ol {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 8px;
+    }
+
+    .slot {
+      display: grid;
+      grid-template-columns: 82px 1fr;
+      gap: 10px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+
+    .slot:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .time {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .word {
+      display: block;
+      width: 100%;
+      border: 1px solid #cfe0ff;
+      background: var(--accent-soft);
+      color: #1d4ed8;
+      border-radius: 6px;
+      padding: 7px 8px;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .word strong {
+      display: block;
+      color: #1e40af;
+    }
+
+    .word span {
+      display: block;
+      color: #475569;
+      font-size: 12px;
+    }
+
+    .example {
+      margin: 5px 0 0;
+      color: #334155;
+      font-size: 12px;
+    }
+
+    .dict {
+      display: inline-block;
+      margin-top: 4px;
+      color: var(--accent);
+      font-size: 12px;
+    }
+
+    .sentence {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      margin: 7px 0;
+    }
+
+    .speak {
+      flex: 0 0 auto;
+      border: 1px solid #cfe0ff;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 6px;
+      padding: 3px 7px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .sample {
+      white-space: pre-wrap;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .qa-box {
+      display: grid;
+      gap: 10px;
+    }
+
+    .qa-row {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+
+    .qa-row strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .qa-input {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .qa-input input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 9px 10px;
+      font: inherit;
+    }
+
+    .qa-input button {
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      background: var(--accent);
+      color: #fff;
+      padding: 9px 12px;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    #qa-answer {
+      margin-top: 10px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+      display: none;
+    }
+
+    .speaking-template {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin: 10px 0;
+    }
+
+    .speaking-template p {
+      margin: 6px 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 13px;
+    }
+
+    #speak-selection {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      display: none;
+      border: 0;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 14px;
+      font-size: 14px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.18);
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: 13px;
+      padding-top: 18px;
+    }
+
+    @media (max-width: 820px) {
+      .summary,
+      .grid,
+      .vocab-grid,
+      .timer,
+      .qa-input {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-head,
+      .slot {
+        grid-template-columns: 1fr;
+      }
+
+      .section.full {
+        grid-column: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>今日商务英语学习任务</h1>
+      <p class="subtitle">Level 4｜每天 1 小时｜Day 1｜今日主题：商务沟通中的“委婉表达不同意见”</p>
+      <div class="resource-bar">
+        <a href="https://www.ted.com/talks/margaret_heffernan_dare_to_disagree" target="_blank" rel="noreferrer">TED Talk - Margaret Heffernan: Dare to disagree</a>
+        <a href="https://www.ted.com/talks/margaret_heffernan_dare_to_disagree/transcript" target="_blank" rel="noreferrer">TED Transcript - Dare to disagree</a>
+        <a href="https://dictionary.cambridge.org/" target="_blank" rel="noreferrer">Cambridge Dictionary</a>
+      </div>
+      <div class="notice">划词发音：选中页面里的英文单词或句子，点击右下角“朗读选中文本”；也可以点击词汇卡或句型旁的“读”按钮。系统朗读只是跟读辅助，准音以 Cambridge 真人发音为准。</div>
+      <div class="voice-tools">
+        <label for="voice-select">朗读语音</label>
+        <select id="voice-select" aria-label="选择英文朗读语音"></select>
+        <button id="slower" type="button">慢一点</button>
+        <button id="normal-rate" type="button">正常语速</button>
+        <button id="test-voice" type="button">试听</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="timer" aria-label="学习倒计时">
+      <div>
+        <div class="section-title">学习倒计时</div>
+        <div id="timer-display" class="timer-display">10:00</div>
+      </div>
+      <div class="timer-controls">
+        <button type="button" data-minutes="10">阅读 10 分钟</button>
+        <button type="button" data-minutes="15">词汇 15 分钟</button>
+        <button type="button" data-minutes="25">专注 25 分钟</button>
+        <input id="custom-minutes" type="number" min="1" max="120" value="10" aria-label="自定义分钟">
+        <button id="set-custom" type="button">设置</button>
+        <button id="timer-start" class="primary" type="button">开始</button>
+        <button id="timer-pause" type="button">暂停</button>
+        <button id="timer-reset" type="button">重置</button>
+      </div>
+    </section>
+
+    <article class="hero-card">
+      <div class="hero-head">
+        <div>
+          <div class="topic">今日主题：商务沟通中的“委婉表达不同意见”</div>
+          <h2>目标：学会在会议中礼貌表达不同意见、提出替代方案，并写一封简短商务邮件。</h2>
+          <div class="divider"></div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <section class="section">
+          <h2 class="module-title">今日时间安排</h2>
+          <div class="timeline">
+            <div class="slot"><div class="time">0-15</div><div>听力精听 + 跟读：听 TED 演讲 <strong>0:00-2:40</strong>，先抓主旨，再跟读 3 句核心表达。</div></div>
+            <div class="slot"><div class="time">15-35</div><div>单词学习 + 今日复习：学习今天 12 个词，逐个点读；今天是 Day 1，暂无旧词复习。</div></div>
+            <div class="slot"><div class="time">35-50</div><div>口语练习 + 录音：先回答 4 个问题，再套用模板，最后录 1 分钟会议发言。</div></div>
+            <div class="slot"><div class="time">50-55</div><div>商务阅读：读 TED transcript 前 4 段，只摘 2 个表达并写 1 句中文启发。</div></div>
+            <div class="slot"><div class="time">55-60</div><div>写作微输出：先手打一遍邮件模板，再按要求改 3 个具体信息。</div></div>
+          </div>
+        </section>
+
+        <section class="section full">
+          <h2 class="module-title">1. 听力材料：15 分钟</h2>
+          <p class="lead-label">今天听这个</p>
+          <p>来源：TED Talk</p>
+          <p>标题：<a href="https://www.ted.com/talks/margaret_heffernan_dare_to_disagree" target="_blank" rel="noreferrer">Margaret Heffernan: Dare to disagree</a></p>
+          <p>今天只学这个时间片段：<strong>0:00-2:40</strong></p>
+          <p class="lead-label">你怎么做</p>
+          <ul>
+            <li>第一遍：不看 transcript，只听这段在讲什么。</li>
+            <li>第二遍：打开 transcript，对照前几段，圈出和 disagreement 有关的表达。</li>
+            <li>第三遍：暂停跟读下面 3 句，重点模仿 but, however, disagree 这些转折语气。</li>
+          </ul>
+          <p class="lead-label">跟读句子（英文 + 中文）</p>
+          <div class="bilingual-lines">
+            <div class="bilingual-line"><strong>Good disagreement is central to progress.</strong><div class="translation">高质量的分歧是推动进步的核心。</div></div>
+            <div class="bilingual-line"><strong>I see your point, but I have a different perspective.</strong><div class="translation">我理解你的观点，但我有不同的看法。</div></div>
+            <div class="bilingual-line"><strong>Could we consider another option before we decide?</strong><div class="translation">我们决定之前，能不能先考虑另一个方案？</div></div>
+          </div>
+        </section>
+
+        <section class="section full">
+          <h2 class="module-title">2. 单词学习 + 今日复习：20 分钟</h2>
+          <p class="lead-label">今日复习</p>
+          <ul>
+            <li>昨天 5 个词：暂无旧词复习</li>
+            <li>3 天前 5 个词：暂无旧词复习</li>
+            <li>7 天前 5 个词：暂无旧词复习</li>
+          </ul>
+          <p class="section-title">今天背这些词，选中文字后可直接朗读；准音以 Cambridge 真人发音为准</p>
+          <div class="vocab-grid">
+            <div><button class="word" data-speak="perspective"><strong>perspective</strong><span>观点，视角｜发音提示：per-SPEC-tive</span><p class="example">From my perspective, the current timeline is too tight for a full launch.</p></button><a class="dict" href="https://dictionary.cambridge.org/dictionary/english/perspective" target="_blank" rel="noreferrer">Cambridge 查询建议</a></div>
+            <div><button class="word" data-speak="concern"><strong>concern</strong><span>担忧，顾虑｜发音提示：con-CERN</span><p class="example">My main concern is the risk of customer-facing bugs.</p></button><a class="dict" href="https://dictionary.cambridge.org/dictionary/english/concern" target="_blank" rel="noreferrer">Cambridge 查询建议</a></div>
+            <div><button class="word" data-speak="alternative"><strong>alternative</strong><span>替代方案｜发音提示：al-TER-na-tive</span><p class="example">An alternative approach is to release the core features first.</p></button><a class="dict" href="https://dictionary.cambridge.org/dictionary/english/alternative" target="_blank" rel="noreferrer">Cambridge 查询建议</a></div>
+            <div><button class="word" data-speak="priority"><strong>priority</strong><span>优先事项｜发音提示：pry-OR-i-ty</span><p class="example">Our priority should be product stability rather than speed.</p></button><a class="dict" href="https://dictionary.cambridge.org/dictionary/english/priority" target="_blank" rel="noreferrer">Cambridge 查询建议</a></div>
+            <div><button class="word" data-speak="realistic"><strong>realistic</strong><span>现实的，可行的｜发音提示：ree-uh-LIS-tic</span><p class="example">I am not sure a two-week deadline is realistic.</p></button><a class="dict" href="https://dictionary.cambridge.org/dictionary/english/realistic" target="_blank" rel="noreferrer">Cambridge 查询建议</a></div>
+            <div><button class="word" data-speak="feasible"><strong>feasible</strong><span>可行的｜发音提示：FEE-zuh-bul</span><p class="example">A pilot launch with one client may be more feasible.</p></button><a class="dict" href="https://dictionary.cambridge.org/dictionary/english/feasible" target="_blank" rel="noreferrer">Cambridge 查询建议</a></div>
+            <div><button class="word" data-speak="risk"><strong>risk</strong><span>风险｜发音提示：risk</span><p class="example">There is a clear risk if we skip testing.</p></button><a class="dict" href="https://dictionary.cambridge.org/dictionary/english/risk" target="_blank" rel="noreferrer">Cambridge 查询建议</a></div>
+            <div><button class="word" data-speak="clarify"><strong>clarify</strong><span>澄清｜发音提示：CLAR-i-fy</span><p class="example">Could you clarify which features are mandatory for launch?</p></button><a class="dict" href="https://dictionary.cambridge.org/dictionary/english/clarify" target="_blank" rel="noreferrer">Cambridge 查询建议</a></div>
+            <div><button class="word" data-speak="align"><strong>align</strong><span>对齐，保持一致｜发音提示：uh-LINE</span><p class="example">We need to align on the deadline before we inform the client.</p></button><a class="dict" href="https://dictionary.cambridge.org/dictionary/english/align" target="_blank" rel="noreferrer">Cambridge 查询建议</a></div>
+            <div><button class="word" data-speak="assumption"><strong>assumption</strong><span>假设｜发音提示：uh-SUMP-shun</span><p class="example">This plan depends on the assumption that design work is already complete.</p></button><a class="dict" href="https://dictionary.cambridge.org/dictionary/english/assumption" target="_blank" rel="noreferrer">Cambridge 查询建议</a></div>
+            <div><button class="word" data-speak="outcome"><strong>outcome</strong><span>结果｜发音提示：OUT-cum</span><p class="example">The best outcome is a stable release with fewer support issues.</p></button><a class="dict" href="https://dictionary.cambridge.org/dictionary/english/outcome" target="_blank" rel="noreferrer">Cambridge 查询建议</a></div>
+            <div><button class="word" data-speak="compromise"><strong>compromise</strong><span>折中方案，妥协｜发音提示：COM-pruh-mize</span><p class="example">A compromise could be to launch internally first.</p></button><a class="dict" href="https://dictionary.cambridge.org/dictionary/english/compromise" target="_blank" rel="noreferrer">Cambridge 查询建议</a></div>
+          </div>
+          <p>提醒：你可以在本地页面选中英文单词或例句后点击“朗读选中文本”，也可以点击词汇卡发音；系统点读只做快速跟读，准音以 Cambridge 真人发音为准。</p>
+        </section>
+
+        <section class="section full">
+          <h2 class="module-title">3. 口语练习：15 分钟</h2>
+          <p class="section-title">场景</p>
+          <p>团队希望两周后上线新项目。你认同“尽快上线”的方向，但你担心质量和测试时间不够，需要在会议里礼貌表达不同意见。</p>
+          <p><strong>先回答这 4 个问题</strong></p>
+          <ol>
+            <li>Do you agree with the two-week launch plan? Why or why not?</li>
+            <li>What is your main concern about the current timeline?</li>
+            <li>What alternative plan would you suggest?</li>
+            <li>How would your idea reduce the risk?</li>
+          </ol>
+          <p><strong>说不出来就用这个模板</strong></p>
+          <div class="speaking-template">
+            <p>I understand the goal, but my main concern is ______.</p>
+            <p>I am not sure ______ is realistic because ______.</p>
+            <p>Could we consider ______ first?</p>
+            <p>I think this would reduce the risk of ______.</p>
+          </div>
+          <p><strong>口语范文</strong></p>
+          <p>I understand the goal of launching quickly, but my main concern is the timeline. I am not sure a two-week launch is realistic because we still need testing and internal review. Could we consider releasing the core features first? I think this would reduce the risk of quality issues and give the team more time to fix bugs.</p>
+          <p><strong>录音要求</strong></p>
+          <p>录 1 分钟左右，至少用到 3 个今天的新词，并且必须说出 concern, alternative, risk 这 3 个关键词中的至少 2 个。</p>
+        </section>
+
+        <section class="section">
+          <h2 class="module-title">4. 阅读材料：5 分钟</h2>
+          <p class="lead-label">今天读这个</p>
+          <p>来源：TED Transcript</p>
+          <p>标题：<a href="https://www.ted.com/talks/margaret_heffernan_dare_to_disagree/transcript" target="_blank" rel="noreferrer">Margaret Heffernan: Dare to disagree - Transcript</a></p>
+          <p>阅读任务：只读 transcript 前 4 段，摘录 2 个表达，再用中文写 1 句话回答“为什么分歧对团队有价值？”</p>
+        </section>
+
+        <section class="section">
+          <h2 class="module-title">5. 写作任务：5 分钟</h2>
+          <p>今天用 5 分钟完成一封 80-120 词的项目时间线邮件改写。</p>
+          <p><strong>场景</strong></p>
+          <p>你在项目会上听到经理希望两周后正式上线。你想先表达理解，再礼貌提出风险，并建议先发一个小范围版本。</p>
+          <p><strong>邮件模板</strong></p>
+          <div class="sample">Subject: Concern About the Project Timeline
+
+Hi [Name],
+
+Thank you for sharing the launch plan. I understand that launching quickly is important for the team.
+
+However, my main concern is the timeline. I am not sure two weeks is realistic because we still need more time for testing and internal review. If we move too fast, there may be a risk of quality issues.
+
+Could we consider releasing a smaller version first? This could help us reduce the risk while still making progress.
+
+Best,
+[Your Name]</div>
+          <p><strong>你的任务</strong></p>
+          <ol>
+            <li>先把整封邮件手打一遍。</li>
+            <li>把 <strong>two weeks</strong> 改成你自己的真实时间，比如 <strong>ten days</strong> 或 <strong>by the end of this month</strong>。</li>
+            <li>把 <strong>testing and internal review</strong> 改成你工作里更真实的两个原因，比如 <strong>security checks and client feedback</strong>。</li>
+            <li>把 <strong>releasing a smaller version first</strong> 改成你自己的替代方案，比如 <strong>running a pilot with one client first</strong>。</li>
+          </ol>
+        </section>
+
+        <section class="section output">
+          <h2 class="module-title">6. 今日输出作业</h2>
+          <ol>
+            <li>1 段 1 分钟口语录音：礼貌表达不同意见。</li>
+            <li>1 封 80-120 词英文邮件：说明 timeline concern 并给出 alternative。</li>
+            <li>5 个今日单词造句。</li>
+          </ol>
+        </section>
+
+        <section class="section check">
+          <h2 class="module-title">7. 今日打卡标准</h2>
+          <ol>
+            <li>完成听力片段 0:00-2:40 的 2-3 遍精听。</li>
+            <li>今天 12 个词里至少记住 8 个，并能口头说出其中 5 个。</li>
+            <li>完成 1 段不少于 45 秒的录音。</li>
+            <li>读完 transcript 前 4 段并摘出 2 个表达。</li>
+            <li>完成 1 封按模板改写的英文邮件。</li>
+          </ol>
+        </section>
+
+        <section class="section full">
+          <h2 class="module-title">8. 今日问答</h2>
+          <div class="qa-box">
+            <div class="qa-row">
+              <strong>Q：我不想一直说 my main concern is，还有什么能换？</strong>
+              <div>A：可以换成：My biggest concern is ... / One concern I have is ... / What worries me most is ... / I am slightly concerned about ...</div>
+            </div>
+            <div class="qa-row">
+              <strong>Q：alternative plan 不知道怎么说具体一点，能怎么替换？</strong>
+              <div>A：你可以换成：release the core features first / run a pilot with one client first / extend the testing period by one week / launch internally before the public release</div>
+            </div>
+            <div class="qa-row">
+              <strong>Q：邮件里 realistic 还能换成什么？</strong>
+              <div>A：可以换成：feasible / practical / workable。例句：I am not sure this deadline is feasible. / I do not think this plan is practical at this stage.</div>
+            </div>
+          </div>
+          <p>还有疑惑可以直接提问。</p>
+          <div class="qa-input">
+            <input id="qa-question" type="text" placeholder="输入你今天卡住的问题，例如：pilot 方案怎么说？">
+            <button id="qa-submit" type="button">回答</button>
+          </div>
+          <div id="qa-answer"></div>
+        </section>
+      </div>
+    </article>
+
+    <footer>后续学习计划会每天中午 12 点自动发送；本页面只保留今天的任务。</footer>
+  </main>
+
+  <button id="speak-selection" type="button">朗读选中文本</button>
+
+  <script>
+    const speakSelectionButton = document.querySelector("#speak-selection");
+    const voiceSelect = document.querySelector("#voice-select");
+    const slowerButton = document.querySelector("#slower");
+    const normalRateButton = document.querySelector("#normal-rate");
+    const testVoiceButton = document.querySelector("#test-voice");
+    const timerDisplay = document.querySelector("#timer-display");
+    const customMinutes = document.querySelector("#custom-minutes");
+    const setCustomButton = document.querySelector("#set-custom");
+    const timerStart = document.querySelector("#timer-start");
+    const timerPause = document.querySelector("#timer-pause");
+    const timerReset = document.querySelector("#timer-reset");
+    const qaQuestion = document.querySelector("#qa-question");
+    const qaSubmit = document.querySelector("#qa-submit");
+    const qaAnswer = document.querySelector("#qa-answer");
+    let selectedEnglishText = "";
+    let voices = [];
+    let speechRate = 0.78;
+    let timerSeconds = 10 * 60;
+    let timerInitialSeconds = timerSeconds;
+    let timerId = null;
+
+    function scoreVoice(voice) {
+      const name = `${voice.name} ${voice.lang}`.toLowerCase();
+      let score = 0;
+      if (voice.lang && voice.lang.toLowerCase().startsWith("en")) score += 20;
+      if (name.includes("samantha")) score += 12;
+      if (name.includes("alex")) score += 10;
+      if (name.includes("google us english")) score += 10;
+      if (name.includes("microsoft aria")) score += 10;
+      if (name.includes("daniel")) score += 8;
+      if (name.includes("karen")) score += 7;
+      if (name.includes("moira")) score += 6;
+      if (name.includes("premium") || name.includes("enhanced") || name.includes("natural")) score += 5;
+      if (name.includes("zh") || name.includes("chinese")) score -= 20;
+      return score;
+    }
+
+    function loadVoices() {
+      if (!("speechSynthesis" in window)) return;
+      voices = window.speechSynthesis.getVoices()
+        .filter(voice => voice.lang && voice.lang.toLowerCase().startsWith("en"))
+        .sort((a, b) => scoreVoice(b) - scoreVoice(a));
+
+      voiceSelect.innerHTML = voices.map((voice, index) => {
+        const label = `${voice.name} (${voice.lang})`;
+        return `<option value="${index}">${label}</option>`;
+      }).join("");
+
+      if (!voices.length) {
+        voiceSelect.innerHTML = `<option>没有找到英文系统语音</option>`;
+      }
+    }
+
+    function speak(text) {
+      const clean = text.replace(/\s+/g, " ").trim();
+      if (!clean || !("speechSynthesis" in window)) return;
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(clean);
+      utterance.lang = "en-US";
+      const selectedVoice = voices[Number(voiceSelect.value)] || voices[0];
+      if (selectedVoice) utterance.voice = selectedVoice;
+      utterance.rate = speechRate;
+      utterance.pitch = 1;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function formatTime(seconds) {
+      const minutes = Math.floor(seconds / 60).toString().padStart(2, "0");
+      const rest = (seconds % 60).toString().padStart(2, "0");
+      return `${minutes}:${rest}`;
+    }
+
+    function updateTimerDisplay() {
+      timerDisplay.textContent = formatTime(timerSeconds);
+      document.title = timerId ? `${formatTime(timerSeconds)}｜今日商务英语学习任务` : "今日商务英语学习任务";
+    }
+
+    function setTimer(minutes) {
+      window.clearInterval(timerId);
+      timerId = null;
+      timerSeconds = Math.max(1, Math.min(120, minutes)) * 60;
+      timerInitialSeconds = timerSeconds;
+      updateTimerDisplay();
+    }
+
+    function startTimer() {
+      if (timerId || timerSeconds <= 0) return;
+      timerId = window.setInterval(() => {
+        timerSeconds -= 1;
+        updateTimerDisplay();
+        if (timerSeconds <= 0) {
+          window.clearInterval(timerId);
+          timerId = null;
+          updateTimerDisplay();
+          speak("Time is up. Please stop and check your progress.");
+        }
+      }, 1000);
+      updateTimerDisplay();
+    }
+
+    function pauseTimer() {
+      window.clearInterval(timerId);
+      timerId = null;
+      updateTimerDisplay();
+    }
+
+    function resetTimer() {
+      window.clearInterval(timerId);
+      timerId = null;
+      timerSeconds = timerInitialSeconds;
+      updateTimerDisplay();
+    }
+
+    document.addEventListener("click", event => {
+      const target = event.target.closest("[data-speak]");
+      if (target) speak(target.dataset.speak);
+    });
+
+    document.addEventListener("selectionchange", () => {
+      const text = window.getSelection().toString().trim();
+      selectedEnglishText = /[A-Za-z]/.test(text) ? text : "";
+      speakSelectionButton.style.display = selectedEnglishText ? "block" : "none";
+    });
+
+    speakSelectionButton.addEventListener("click", () => {
+      speak(selectedEnglishText);
+    });
+
+    slowerButton.addEventListener("click", () => {
+      speechRate = 0.68;
+      speak("Could we consider an alternative?");
+    });
+
+    normalRateButton.addEventListener("click", () => {
+      speechRate = 0.82;
+      speak("Could we consider an alternative?");
+    });
+
+    testVoiceButton.addEventListener("click", () => {
+      speak("I see your point, but my main concern is the timeline.");
+    });
+
+    document.querySelectorAll("[data-minutes]").forEach(button => {
+      button.addEventListener("click", () => {
+        setTimer(Number(button.dataset.minutes));
+      });
+    });
+
+    setCustomButton.addEventListener("click", () => {
+      setTimer(Number(customMinutes.value || 10));
+    });
+
+    timerStart.addEventListener("click", startTimer);
+    timerPause.addEventListener("click", pauseTimer);
+    timerReset.addEventListener("click", resetTimer);
+
+    function answerQuestion(question) {
+      const text = question.toLowerCase();
+      if (text.includes("alternative") || text.includes("替代") || text.includes("方案") || text.includes("launching")) {
+        return "可以这样替换：Could we consider launching a beta version first? / Could we consider releasing the core features first? / Could we consider running a pilot with a small group of users first?";
+      }
+      if (text.includes("two weeks") || text.includes("时间") || text.includes("多久")) {
+        return "可以换成你真实觉得紧张的时间，比如 ten days、three weeks、by the end of this month。例句：I'm not sure ten days is realistic because we still need more time for testing.";
+      }
+      if (text.includes("testing") || text.includes("feedback") || text.includes("原因")) {
+        return "可以换成更真实的原因：bug fixing、user testing、design review、security checks、customer feedback、internal approval。例句：because we still need more time for bug fixing and internal approval.";
+      }
+      if (text.includes("concern") || text.includes("担心") || text.includes("担忧")) {
+        return "可以说：My main concern is the timeline. / My main concern is the quality of the release. / My main concern is the risk of launching without enough testing.";
+      }
+      return "这个问题可以直接拿来问我。你也可以先用今天的模板回答：I see your point, but my main concern is _____. I'm not sure _____ is realistic because _____. Could we consider _____ instead?";
+    }
+
+    qaSubmit.addEventListener("click", () => {
+      const question = qaQuestion.value.trim();
+      if (!question) return;
+      qaAnswer.style.display = "block";
+      qaAnswer.textContent = answerQuestion(question);
+    });
+
+    qaQuestion.addEventListener("keydown", event => {
+      if (event.key === "Enter") qaSubmit.click();
+    });
+
+    if ("speechSynthesis" in window) {
+      loadVoices();
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+
+    updateTimerDisplay();
+  </script>
+</body>
+</html>
